@@ -42,11 +42,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Calculations\Fitness.cs" />
+    <Compile Include="Calculations\Mutation.cs" />
+    <Compile Include="Calculations\Probability.cs" />
+    <Compile Include="Calculations\Roulette.cs" />
+    <Compile Include="Calculations\Selection.cs" />
+    <Compile Include="Calculations\SinglePointCrossover.cs" />
+    <Compile Include="Calculations\TwoPointCrossover.cs" />
+    <Compile Include="FileReader.cs" />
+    <Compile Include="Models\Classification.cs" />
+    <Compile Include="Models\Person.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Data\RetailData.csv" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
