@@ -1,3 +1,4 @@
+using ClassificationDS.Calculations;
 using ClassificationDS.Models;
 using System;
 using System.Collections.Generic;
@@ -21,14 +22,24 @@ namespace ClassificationDS
             // Press Ctrl+F5 (or go to Debug > Start Without Debugging) to run your app.
 
             FileReader.ReadData();
-            Classification.StartClassification(0.80,0.05,10);
+            UserInput.Setup();
+            Classification.StartClassification();
+            List<int> genes = new List<int>()
+            {
+                //Random getal tussen 0 en 1, doe dit 19 keer
+                //Male or female
+                1,0, 
+                //Home or Apt
+                1,0,
+                //The rest of genes
+                1,0,1,0,0,1,0,1,0,0,0,0,1,0,1
+            };
+            var sse = Fitness.CalculatePrediction(genes, Classification._bestCoefficient);
+            Console.WriteLine("Predection Random Person: " + sse);
             Console.ReadKey();
 
             // Go to http://aka.ms/dotnet-get-started-console to continue learning how to build a console app! 
         }
-        public static void GeneticAlgorithm()
-        {
-
-        }
+      
     }
 }

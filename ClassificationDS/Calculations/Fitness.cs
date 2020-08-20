@@ -28,10 +28,9 @@ namespace ClassificationDS.Calculations
             double prediction = 0.0;
             int length = genes.Count();
             var genesArray = genes.ToArray();
-            var coefficientArray = FileReader.Coefficient.ToArray();
             for (int i = 0; i < length; i++)
             {
-                prediction += genesArray[i] * coefficientArray[i];
+                prediction += genesArray[i] * coefficient[i];
             }
             return prediction;
         }

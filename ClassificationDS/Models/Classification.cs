@@ -12,40 +12,42 @@ namespace ClassificationDS.Models
         public static double crossoverRate { get; set; }
         public static double mutationRate { get; set; }
         public static int iterations { get; set; }
-        public static void StartClassification( double _crossoverRate, double _mutationRate, int _iteration)
+        public static double[] _bestCoefficient { get; set; }
+
+        public static void StartClassification( )
         {
-            crossoverRate = _crossoverRate;
-            mutationRate =_mutationRate;
-            iterations = _iteration;
+            crossoverRate = UserInput.crossoverRate;
+            mutationRate = UserInput.mutationRate;
+            iterations = UserInput.iterations;
 
             Random random = new Random();
             var populationCopy = Init();
             double bestFitness = 0.0;
             double[] bestCoefficients;
-
+            bestCoefficients = FileReader.Coefficient.ToArray();
             for (int i = 1; i <= iterations; i++)
             {
                 //Check for startalgorithm method, why the same SSE for every iteration
-                double[] newCoefficients = StartAlgorithm(random, populationCopy);
+                double[] newCoefficients = StartAlgorithm(random, populationCopy, bestCoefficients);
                 Fitness.CalculateFitness(newCoefficients, populationCopy);
-                var newFitness = FileReader.Population.Select(x => x.Value.Item1).Sum(a => a.Fitness);
-                if (i != 1)
+                var newFitness = populationCopy.Select(x => x.Value.Item1).Sum(a => a.Fitness);
+                if (i > 1)
                 {
                     if (newFitness < bestFitness)
                     {
                         bestFitness = newFitness;
                         bestCoefficients = newCoefficients;
                     }
-                }else { bestFitness = newFitness; }
+                }else { bestFitness = newFitness;bestCoefficients = newCoefficients; }
              
             }
-            Console.WriteLine("Beste SSE"+ bestFitness);
+            _bestCoefficient = bestCoefficients;
+            Console.WriteLine("Beste SSE: "+ bestFitness);
         }
 
-        private static double[] StartAlgorithm( Random random, Dictionary<int, Tuple<Person, int>> population )
+        private static double[] StartAlgorithm( Random random, Dictionary<int, Tuple<Person, int>> population, double[] coefficients )
         {
             Probability.CalculateProbability();
-            double[] coefficients = FileReader.Coefficient.ToArray();
 
             for (int i = 0; i < population.Count; i++)
             {
@@ -61,7 +63,7 @@ namespace ClassificationDS.Models
             Tuple<Person, Person> offspring;
             if (random.NextDouble() < crossoverRate)
             {
-                offspring = RandomCrossover(parents, random);
+                offspring = RunCrossover(parents, random);
             }
             else
             {
@@ -70,14 +72,17 @@ namespace ClassificationDS.Models
             
         }
 
-        public static Tuple<Person, Person> RandomCrossover(Tuple<Person, Person> parents, Random random)
+        public static Tuple<Person, Person> RunCrossover(Tuple<Person, Person> parents, Random random)
         {
             Tuple<Person, Person> offspring;
-            if (random.Next(0,1) == 1)
+            if (UserInput.crossoverSelection == 1)
             {
                 offspring = SinglePointCrossover.Crossover(parents, random);
             }
-            else { offspring = TwoPointCrossover.Crossover(parents, random); }
+            else 
+            {
+                offspring = TwoPointCrossover.Crossover(parents, random);
+            }
             return offspring;
         }
         public static Dictionary<int, Tuple<Person, int>> Init()
