@@ -10,6 +10,12 @@ namespace ClassificationDS.Calculations
     public class Fitness
     {
         public static double SSE { get; set; }
+
+        /// <summary>
+        /// Bereken de fitness van gehele population
+        /// </summary>
+        /// <param name="coefficient">wegingscoefficienten</param>
+        /// <param name="population">personen</param>
         public static void CalculateFitness(double[] coefficient, Dictionary<int, Tuple<Person, int>> population)
         {
             double sse = 0.0;
@@ -23,6 +29,12 @@ namespace ClassificationDS.Calculations
             Console.WriteLine(SSE);
         }
 
+        /// <summary>
+        /// Bereken de Prediction van per persoon
+        /// </summary>
+        /// <param name="genes">eigenschappen van 1 persoon</param>
+        /// <param name="coefficient">wegingscoefficienten</param>
+        /// <returns>Prediction in double</returns>
         public static double CalculatePrediction(List<int> genes, double[] coefficient)
         {
             double prediction = 0.0;

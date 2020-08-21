@@ -1,4 +1,5 @@
 ﻿using ClassificationDS.Calculations;
+using ClassificationDS.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,9 @@ namespace ClassificationDS.Models
         public static int iterations { get; set; }
         public static double[] _bestCoefficient { get; set; }
 
+        /// <summary>
+        /// Uitvoeren van de algoritm
+        /// </summary>
         public static void StartClassification( )
         {
             crossoverRate = UserInput.crossoverRate;
@@ -45,9 +49,16 @@ namespace ClassificationDS.Models
             Console.WriteLine("Beste SSE: "+ bestFitness);
         }
 
+        /// <summary>
+        /// Bereken de probability, crossover en mutation.
+        /// </summary>
+        /// <param name="random">een random object</param>
+        /// <param name="population">populatie</param>
+        /// <param name="coefficients">wegingscoefficienten</param>
+        /// <returns>Nieuwe Coefficienten van een type double array</returns>
         private static double[] StartAlgorithm( Random random, Dictionary<int, Tuple<Person, int>> population, double[] coefficients )
         {
-            Probability.CalculateProbability();
+            Probability.CalculateProbability(population);
 
             for (int i = 0; i < population.Count; i++)
             {
@@ -72,19 +83,34 @@ namespace ClassificationDS.Models
             
         }
 
+        /// <summary>
+        /// Uitvoeren van een crossover, bepaald door de user
+        /// </summary>
+        /// <param name="parents">ouders</param>
+        /// <param name="random">een random object</param>
+        /// <returns>2 kinderen van een type Person</returns>
         public static Tuple<Person, Person> RunCrossover(Tuple<Person, Person> parents, Random random)
         {
             Tuple<Person, Person> offspring;
+
+            ICrossover crossover;
+
             if (UserInput.crossoverSelection == 1)
             {
-                offspring = SinglePointCrossover.Crossover(parents, random);
+                crossover = new SinglePointCrossover();
+                offspring = crossover.Crossover(parents, random);
             }
             else 
             {
-                offspring = TwoPointCrossover.Crossover(parents, random);
+                crossover = new TwoPointCrossover();
+                offspring = crossover.Crossover(parents, random);
             }
             return offspring;
         }
+        /// <summary>
+        /// Uitvoeren van Fitness
+        /// </summary>
+        /// <returns>Een kopie van een population</returns>
         public static Dictionary<int, Tuple<Person, int>> Init()
         {
             Fitness.CalculateFitness(FileReader.Coefficient.ToArray(), FileReader.Population);

@@ -27,7 +27,6 @@ namespace ClassificationDS
                0.16,  0.19, -0.21,  0.24
             };
 
-
             Population = new Dictionary<int, Tuple<Person, int>>();
             var fileLocation = "../../Data/RetailData.csv";
             var delimiter = ',';

@@ -9,6 +9,12 @@ namespace ClassificationDS.Calculations
 {
     public class Selection
     {
+        /// <summary>
+        /// Pakt twee parents van de population
+        /// </summary>
+        /// <param name="random">een random object</param>
+        /// <param name="population">populatie</param>
+        /// <returns>2 personen als ouders in een type Person</returns>
         public static Tuple<Person, Person> SelectParents(Random random, Dictionary<int, Tuple<Person, int>> population)
         {
             var firstIndividual = Roulette.SelectWinner(population, random);

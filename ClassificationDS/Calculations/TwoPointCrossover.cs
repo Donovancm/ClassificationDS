@@ -1,4 +1,5 @@
-﻿using ClassificationDS.Models;
+﻿using ClassificationDS.Interface;
+using ClassificationDS.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,9 +8,15 @@ using System.Threading.Tasks;
 
 namespace ClassificationDS.Calculations
 {
-    public class TwoPointCrossover
+    public class TwoPointCrossover : ICrossover
     {
-        public static Tuple<Person, Person> Crossover(Tuple<Person, Person> parents, Random random)
+        /// <summary>
+        /// Uitvoeren van een TwoCrossoverPoint tussen 2 ouders
+        /// </summary>
+        /// <param name="parents">ouders</param>
+        /// <param name="random">een random object</param>
+        /// <returns>2 kinderen van een type Person</returns>
+        public Tuple<Person, Person> Crossover(Tuple<Person, Person> parents, Random random)
         {
             var parentLength = parents.Item1.Genes.Count;
             var crossoverPoint1 = random.Next(0, parentLength);

@@ -50,6 +50,7 @@
     <Compile Include="Calculations\SinglePointCrossover.cs" />
     <Compile Include="Calculations\TwoPointCrossover.cs" />
     <Compile Include="FileReader.cs" />
+    <Compile Include="Interface\ICrossover.cs" />
     <Compile Include="Models\Classification.cs" />
     <Compile Include="Models\Person.cs" />
     <Compile Include="Program.cs" />

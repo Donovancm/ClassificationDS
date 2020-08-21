@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClassificationDS.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,9 +9,12 @@ namespace ClassificationDS.Calculations
 {
     public class Probability
     {
-        public static void CalculateProbability()
+        /// <summary>
+        /// Berekent de probability van population
+        /// </summary>
+        public static void CalculateProbability(Dictionary<int, Tuple<Person, int>> population)
         {
-            var individuals = FileReader.Population;
+            var individuals = population;
             int minFitness = int.MaxValue;
             int maxFitness = int.MinValue;
             int totalFitness = 0;
