@@ -59,6 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="ClassDiagram.cd" />
     <None Include="Data\RetailData.csv" />
   </ItemGroup>
   <ItemGroup />
