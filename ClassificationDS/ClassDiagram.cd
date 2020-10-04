@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="ClassificationDS.Calculations.Fitness">
-    <Position X="10.25" Y="0.5" Width="1.5" />
+    <Position X="7.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>EAAAAAAAAAAAAAAAABAAIAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Calculations\Fitness.cs</FileName>
@@ -15,28 +15,28 @@
     </TypeIdentifier>
   </Class>
   <Class Name="ClassificationDS.Calculations.Probability">
-    <Position X="8" Y="0.5" Width="2" />
+    <Position X="7.5" Y="4" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Calculations\Probability.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ClassificationDS.Calculations.Roulette">
-    <Position X="9.5" Y="4" Width="2" />
+    <Position X="9.5" Y="0.5" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAgAAAAAAAA=</HashCode>
       <FileName>Calculations\Roulette.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ClassificationDS.Calculations.Selection">
-    <Position X="7.75" Y="1.75" Width="1.5" />
+    <Position X="7.75" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Calculations\Selection.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ClassificationDS.Calculations.SinglePointCrossover">
-    <Position X="2.5" Y="0.5" Width="1.5" />
+    <Position X="0.5" Y="2" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Calculations\SinglePointCrossover.cs</FileName>
@@ -44,7 +44,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="ClassificationDS.Calculations.TwoPointCrossover">
-    <Position X="4.25" Y="0.5" Width="1.5" />
+    <Position X="0.5" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Calculations\TwoPointCrossover.cs</FileName>
@@ -52,35 +52,35 @@
     <Lollipop Position="0.1" />
   </Class>
   <Class Name="ClassificationDS.Models.Classification">
-    <Position X="0.5" Y="2.75" Width="1.5" />
+    <Position X="5.75" Y="3" Width="1.5" />
     <TypeIdentifier>
       <HashCode>ABEAAAAAAAAAAAAAAgAggAAAAAAAAAAACAAiAAAAAQA=</HashCode>
       <FileName>Models\Classification.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ClassificationDS.Models.Person">
-    <Position X="2.25" Y="3" Width="1.5" />
+    <Position X="5.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAgAIAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAEAAIAA=</HashCode>
       <FileName>Models\Person.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ClassificationDS.FileReader">
-    <Position X="6" Y="0.5" Width="1.5" />
+    <Position X="2.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAABAAAIAAAAAAAAAEAIAAAAAAAAAAAAAAA=</HashCode>
       <FileName>FileReader.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ClassificationDS.Program">
-    <Position X="4.25" Y="3" Width="1.5" />
+    <Position X="4" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
       <FileName>Program.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ClassificationDS.UserInput">
-    <Position X="6.25" Y="3.25" Width="2" />
+    <Position X="2.25" Y="2.75" Width="2" />
     <TypeIdentifier>
       <HashCode>ABAAAAAACAAAAAAAEgAAAAAAAAAAAAAACAAAAAAQAAA=</HashCode>
       <FileName>UserInput.cs</FileName>

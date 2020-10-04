@@ -17,10 +17,9 @@ namespace ClassificationDS.Calculations
         /// <returns>Gekozen persoon voor de algorithm loop</returns>
         public static Person SelectWinner(Dictionary<int, Tuple<Person, int>> population, Random random)
         {
-            var individuals = population.Select(x => x.Value.Item1).ToList();
+            var individuals = population.Select(x => x.Value.Item1).ToList(); // get all individuals in list
             var winningNumber = GetRandomNumber(individuals, random);  
-            var winner = individuals.Where(x => x.StartBorder < winningNumber).Last();
-
+            var winner = individuals.Find(x => x.StartBorder <= winningNumber & x.EndBorder >= winningNumber);
             return winner;
         }
 

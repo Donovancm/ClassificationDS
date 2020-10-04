@@ -12,6 +12,7 @@ namespace ClassificationDS.Models
         public double Fitness { get; set; }
         public double StartBorder { get; set; }
         public double EndBorder { get; set; }
+        public double CumulativeProbability { get; set; }
 
         public Person()
         {

@@ -18,14 +18,20 @@ namespace ClassificationDS
             return new Dictionary<int, Tuple<Person, int>>(Population);
         }
 
+        public static double GetRandomNumber(Random random, double minimum, double maximum)
+        {
+            return random.NextDouble() * (maximum - minimum) + minimum;
+        }
+
         public static void ReadData()
         {
-            Coefficient = new List<double>()
-            { -0.10, -0.03, -0.03, -0.01, 0.22 ,
-              -0.27, -0.24,  0.35,  0.29, 0.33 ,
-               0.19,  0.23,  0.15,  0.16,-0.16 ,
-               0.16,  0.19, -0.21,  0.24
-            };
+            Random random = new Random();
+            Coefficient = new List<double>();
+            // genarate coeff randomly
+            for (int i = 1; i <= 19; i++)
+            {
+                Coefficient.Add(GetRandomNumber(random,-1.0, 1.0));
+            }
 
             Population = new Dictionary<int, Tuple<Person, int>>();
             var fileLocation = "../../Data/RetailData.csv";

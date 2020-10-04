@@ -9,6 +9,16 @@ namespace ClassificationDS.Calculations
 {
     public class Selection
     {
+
+
+        public static Tuple<Person, Person> Run(Dictionary<int, Tuple<Person, int>> population)
+        {
+            //probability
+            Probability.CalculateProbability(Fitness.FitnessIndividues, population);
+            //selection randomly with probability
+            return SelectParents(new Random(), population);
+        }
+
         /// <summary>
         /// Pakt twee parents van de population
         /// </summary>

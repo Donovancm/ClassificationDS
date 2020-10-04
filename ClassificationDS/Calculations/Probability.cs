@@ -12,52 +12,18 @@ namespace ClassificationDS.Calculations
         /// <summary>
         /// Berekent de probability van population
         /// </summary>
-        public static void CalculateProbability(Dictionary<int, Tuple<Person, int>> population)
+        public static void CalculateProbability(Dictionary<int,double> fitnessIndividues, Dictionary<int, Tuple<Person, int>> population)
         {
-            var individuals = population;
-            int minFitness = int.MaxValue;
-            int maxFitness = int.MinValue;
-            int totalFitness = 0;
 
-            //Calculate minimal value and maximum value of fitness. Also counting fitness of individual
-            foreach (var individual in individuals)
-            {
-                int individualFitness = 0;
-                foreach (var value in individual.Value.Item1.Genes)
-                {
-                    if (value == 1)
-                    {
-                        individualFitness++;
-                    }
-                }
-
-                if (individualFitness < minFitness)
-                {
-                    minFitness = individualFitness;
-                }
-
-                if (individualFitness > maxFitness)
-                {
-                    maxFitness = individualFitness;
-                }
-
-                individual.Value.Item1.Fitness = individualFitness;
-                totalFitness += individualFitness;
-            }
-
-            //Calculate cumulative probabilty with normalized fitness(hoe lager fitness, hoe better)
+            //Berekent de cumalatieve probability met de genormaliseerde fitness(hoe lager fitness, hoe better)
             double cumulativeProbability = 0.0;
-            foreach (var individual in individuals)
+            double totalFitness = fitnessIndividues.Sum(x => x.Value);
+            foreach (var individual in fitnessIndividues)
             {
-                double normalisedFitness = 0.0;
-                double normalize = 0.0;
-
-                normalize = (double)(individual.Value.Item1.Fitness - minFitness) / (double)(maxFitness - minFitness);
-                normalisedFitness = 1 - normalize;
-
-                individual.Value.Item1.StartBorder = cumulativeProbability;
-                cumulativeProbability += normalisedFitness;
-                individual.Value.Item1.EndBorder = cumulativeProbability;
+                population[individual.Key].Item1.StartBorder = cumulativeProbability;
+                population[individual.Key].Item1.EndBorder = cumulativeProbability + individual.Value;
+                population[individual.Key].Item1.CumulativeProbability = individual.Value;
+                cumulativeProbability += individual.Value;
             }
         }
     }

@@ -9,6 +9,7 @@ namespace ClassificationDS.Calculations
 {
     public class Fitness
     {
+        public static Dictionary<int, double> FitnessIndividues;
         public static double SSE { get; set; }
 
         /// <summary>
@@ -18,10 +19,12 @@ namespace ClassificationDS.Calculations
         /// <param name="population">personen</param>
         public static void CalculateFitness(double[] coefficient, Dictionary<int, Tuple<Person, int>> population)
         {
+            FitnessIndividues = new Dictionary<int, double>();
             double sse = 0.0;
             foreach (var individual in population)
             {
                 double fitness = Math.Pow(individual.Value.Item2 - CalculatePrediction(individual.Value.Item1.Genes, coefficient), 2);
+                FitnessIndividues.Add(individual.Key, fitness);
                 sse += fitness;
                 individual.Value.Item1.Fitness = Math.Abs(fitness);
             }
