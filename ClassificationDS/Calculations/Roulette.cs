@@ -19,7 +19,7 @@ namespace ClassificationDS.Calculations
         {
             var individuals = population.Select(x => x.Value.Item1).ToList(); // get all individuals in list
             var winningNumber = GetRandomNumber(individuals, random);  
-            var winner = individuals.Find(x => x.StartBorder <= winningNumber & x.EndBorder >= winningNumber);
+            var winner = individuals.Find(x => x.StartBorder <= winningNumber && x.EndBorder >= winningNumber);
             return winner;
         }
 
@@ -34,7 +34,7 @@ namespace ClassificationDS.Calculations
             double minimum = individuals.First().StartBorder;
             double maximum = individuals.Last().EndBorder;
 
-            return random.NextDouble() * (maximum - minimum);
+            return random.NextDouble() * (maximum - minimum) + minimum;
         }
     }
 }
